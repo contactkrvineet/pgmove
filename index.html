@@ -943,6 +943,237 @@ a.map-link::after {
   font-weight: 400;
 }
 
+/* ==========================================================================
+   Section 12: Shopping list tab
+   ========================================================================== */
+
+.shop-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.shop-stat {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--sage);
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+.shop-stat.amber { border-left-color: var(--amber); }
+.shop-stat.terra { border-left-color: var(--terracotta); }
+.shop-stat.moss  { border-left-color: var(--moss); }
+
+.shop-stat .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+.shop-stat .value {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--moss-dark);
+}
+
+.shop-form {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+}
+
+.shop-form h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--moss-dark);
+  margin-bottom: 14px;
+}
+
+.shop-form-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 2.5fr 1.2fr 0.8fr 1.2fr 2fr auto;
+  gap: 10px;
+  align-items: end;
+}
+@media (max-width: 1000px) {
+  .shop-form-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .shop-form-grid > div:nth-child(2) { grid-column: span 2; }
+  .shop-form-grid > div:last-child { grid-column: span 3; }
+}
+
+.shop-form input, .shop-form select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+}
+.shop-form input:focus, .shop-form select:focus {
+  outline: none;
+  border-color: var(--moss);
+}
+
+.shop-form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.shop-filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 12px;
+}
+
+.filter-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  border-radius: 14px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: all 0.15s;
+}
+.filter-btn:hover { border-color: var(--moss); color: var(--ink); }
+.filter-btn.active {
+  background: var(--moss-dark);
+  color: var(--paper);
+  border-color: var(--moss-dark);
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.shop-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 14px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+.shop-card:hover {
+  border-color: var(--amber);
+  box-shadow: 0 4px 12px rgba(28, 41, 32, 0.06);
+}
+
+.shop-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.shop-card-name {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--moss-dark);
+  line-height: 1.2;
+  flex: 1;
+}
+
+.status-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 9px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+}
+.status-badge:hover { transform: scale(1.04); }
+
+.status-badge[data-s="to-research"]  { background: #d8d2c2; color: var(--ink-soft); }
+.status-badge[data-s="researching"]  { background: var(--amber-soft); color: #4a2810; }
+.status-badge[data-s="shortlisted"]  { background: #e5cb88; color: #4a3408; }
+.status-badge[data-s="ordered"]      { background: var(--moss); color: var(--paper); }
+.status-badge[data-s="delivered"]    { background: var(--done); color: var(--paper); }
+
+.shop-meta {
+  font-size: 13px;
+  color: var(--ink-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+.shop-meta strong { color: var(--ink); font-weight: 600; }
+
+.shop-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--terracotta);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--terracotta);
+  align-self: flex-start;
+  word-break: break-all;
+  max-width: 100%;
+}
+.shop-link:hover { color: var(--moss-dark); border-bottom-color: var(--moss-dark); }
+
+.shop-notes {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.shop-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--rule-soft);
+}
+
+.shop-card-actions .btn {
+  font-size: 11.5px;
+  padding: 4px 10px;
+}
+
+.shop-empty {
+  grid-column: 1 / -1;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.shop-card.editing {
+  border: 2px solid var(--amber);
+  background: rgba(200, 115, 30, 0.05);
+}
+
 </style>
 </head>
 <body>
@@ -977,6 +1208,7 @@ a.map-link::after {
     <button class="tab" data-tab="brampton">Brampton Tasks</button>
     <button class="tab" data-tab="roadtrip">Road Trip Plan</button>
     <button class="tab" data-tab="prince-george">Prince George Setup</button>
+    <button class="tab" data-tab="shopping">Shopping List</button>
     <button class="tab" data-tab="expenses">Expense Tracker</button>
   </div>
 
@@ -1005,6 +1237,12 @@ a.map-link::after {
         <div class="stat-value" id="stat-road">0/7</div>
         <div class="stat-detail">Hotels booked &amp; nights checked-off</div>
         <div class="progress-bar"><div class="progress-fill" id="bar-road" style="width:0%"></div></div>
+      </div>
+      <div class="stat-card terra">
+        <div class="stat-label">Shopping List</div>
+        <div class="stat-value" id="stat-shop">0/0</div>
+        <div class="stat-detail" id="stat-shop-detail">$0 estimated</div>
+        <div class="progress-bar"><div class="progress-fill" id="bar-shop" style="width:0%"></div></div>
       </div>
       <div class="stat-card sage">
         <div class="stat-label">Prince George Setup</div>
@@ -1743,6 +1981,80 @@ a.map-link::after {
     </div>
   </section>
 
+
+  <!-- ============ SHOPPING LIST ============ -->
+  <section class="tab-content" id="shopping">
+    <div class="section-header">
+      <h2>Shopping List</h2>
+      <p>Track items to buy in Prince George with links to product pages. Status cycles as you research → order → receive.</p>
+    </div>
+
+    <div class="shop-summary" id="shop-summary">
+      <!-- filled by JS -->
+    </div>
+
+    <div class="shop-form">
+      <h3>Add an item</h3>
+      <div class="shop-form-grid">
+        <div>
+          <label class="field-label">Item name *</label>
+          <input type="text" id="shop-name" placeholder="e.g. Sofa">
+        </div>
+        <div>
+          <label class="field-label">Product link (paste URL)</label>
+          <input type="url" id="shop-url" placeholder="https://...">
+        </div>
+        <div>
+          <label class="field-label">Store</label>
+          <input type="text" id="shop-store" placeholder="auto-fills from URL">
+        </div>
+        <div>
+          <label class="field-label">Price ($)</label>
+          <input type="number" id="shop-price" step="0.01" placeholder="0.00">
+        </div>
+        <div>
+          <label class="field-label">Status</label>
+          <select id="shop-status">
+            <option value="to-research">To research</option>
+            <option value="researching" selected>Researching</option>
+            <option value="shortlisted">Shortlisted</option>
+            <option value="ordered">Ordered</option>
+            <option value="delivered">Delivered</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label">Notes</label>
+          <input type="text" id="shop-notes" placeholder="size, colour, dimensions…">
+        </div>
+        <div class="shop-form-actions">
+          <button class="btn amber" id="add-shop">+ Add item</button>
+          <button class="btn ghost" id="cancel-edit-shop" style="display:none;">Cancel edit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="to-research">To research</button>
+      <button class="filter-btn" data-filter="researching">Researching</button>
+      <button class="filter-btn" data-filter="shortlisted">Shortlisted</button>
+      <button class="filter-btn" data-filter="ordered">Ordered</button>
+      <button class="filter-btn" data-filter="delivered">Delivered</button>
+    </div>
+
+    <div class="shop-grid" id="shop-grid">
+      <!-- filled by JS -->
+    </div>
+
+    <div class="action-bar">
+      <div class="left">Tip: tap the status badge on any card to cycle through stages.</div>
+      <div>
+        <button class="btn ghost" id="export-shop">⤓ Export shopping list (CSV)</button>
+        <button class="btn ghost" id="seed-shop">Restore default items</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ EXPENSES ============ -->
   <section class="tab-content" id="expenses">
     <div class="section-header">
@@ -2268,6 +2580,363 @@ a.map-link::after {
       setTimeout(tryLoadWeatherIfRoadtripActive, 50);
     });
   });
+
+
+  // ===== SHOPPING LIST =====
+  const SHOP_KEY = 'pg-journey-shopping-v1';
+
+  // Pre-populated items based on the user's request
+  const SHOP_SEED = [
+    { name: 'Sofa', notes: '3-seater for the living room', status: 'to-research' },
+    { name: 'Lamp', notes: 'Floor or table lamp', status: 'to-research' },
+    { name: 'Mattress', notes: 'Queen + a kid mattress', status: 'to-research' },
+    { name: 'Bed frame', notes: 'Queen size', status: 'to-research' },
+    { name: 'Study table', notes: 'For Akshara\'s room', status: 'to-research' },
+    { name: 'Blinds', notes: 'Window blinds / blackout curtains', status: 'to-research' },
+  ];
+
+  // Domain → Store name lookup
+  const STORE_LOOKUP = [
+    [/amazon\.(ca|com)/, 'Amazon'],
+    [/ikea\./, 'IKEA'],
+    [/costco\./, 'Costco'],
+    [/walmart\./, 'Walmart'],
+    [/thebrick\./, 'The Brick'],
+    [/leons\./, "Leon's"],
+    [/wayfair\./, 'Wayfair'],
+    [/homedepot\./, 'Home Depot'],
+    [/canadiantire\./, 'Canadian Tire'],
+    [/bestbuy\./, 'Best Buy'],
+    [/sleepcountry\./, 'Sleep Country'],
+    [/structube\./, 'Structube'],
+    [/eq3\./, 'EQ3'],
+    [/pier1\./, 'Pier 1'],
+    [/homesense\./, 'HomeSense'],
+    [/winners\./, 'Winners'],
+    [/saveon|saveonfoods/, 'Save-On-Foods'],
+    [/lowes\./, "Lowe's"],
+    [/staples\./, 'Staples'],
+    [/marketplace\.facebook/, 'FB Marketplace'],
+    [/kijiji\./, 'Kijiji'],
+  ];
+
+  function detectStore(url) {
+    if (!url) return '';
+    try {
+      const host = new URL(url).hostname.toLowerCase();
+      for (const [pattern, name] of STORE_LOOKUP) {
+        if (pattern.test(host)) return name;
+      }
+      // Fallback: pretty domain
+      return host.replace(/^www\./, '').split('.')[0]
+        .replace(/^./, c => c.toUpperCase());
+    } catch {
+      return '';
+    }
+  }
+
+  function loadShop() {
+    try { return JSON.parse(localStorage.getItem(SHOP_KEY) || 'null'); }
+    catch { return null; }
+  }
+  function saveShop(items) { localStorage.setItem(SHOP_KEY, JSON.stringify(items)); }
+
+  // Initialize: seed with defaults if no saved data
+  let shopItems = loadShop();
+  if (shopItems === null) {
+    shopItems = SHOP_SEED.map((s, i) => ({
+      id: `seed-${i}`,
+      name: s.name,
+      url: '',
+      store: '',
+      price: null,
+      status: s.status,
+      notes: s.notes,
+      added: new Date().toISOString().slice(0, 10),
+    }));
+    saveShop(shopItems);
+  }
+
+  // Status cycle order
+  const STATUS_ORDER = ['to-research', 'researching', 'shortlisted', 'ordered', 'delivered'];
+  const STATUS_LABEL = {
+    'to-research': 'To research',
+    'researching': 'Researching',
+    'shortlisted': 'Shortlisted',
+    'ordered': 'Ordered',
+    'delivered': 'Delivered',
+  };
+
+  let shopFilter = 'all';
+  let editingId = null;
+
+  function formatPrice(p) {
+    if (p === null || p === undefined || p === '') return '';
+    return '$' + Number(p).toFixed(2);
+  }
+
+  function escapeHtmlShop(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+  }
+
+  function renderShopSummary() {
+    const summary = document.getElementById('shop-summary');
+    if (!summary) return;
+
+    const total = shopItems.length;
+    const ordered = shopItems.filter(i => i.status === 'ordered' || i.status === 'delivered').length;
+    const delivered = shopItems.filter(i => i.status === 'delivered').length;
+    const estimated = shopItems.reduce((s, i) => s + (parseFloat(i.price) || 0), 0);
+
+    summary.innerHTML = `
+      <div class="shop-stat amber"><div class="label">Items tracked</div><div class="value">${total}</div></div>
+      <div class="shop-stat"><div class="label">Estimated cost</div><div class="value">${formatPrice(estimated) || '$0'}</div></div>
+      <div class="shop-stat moss"><div class="label">Ordered</div><div class="value">${ordered}/${total}</div></div>
+      <div class="shop-stat terra"><div class="label">Delivered</div><div class="value">${delivered}/${total}</div></div>
+    `;
+  }
+
+  function renderShopList() {
+    const grid = document.getElementById('shop-grid');
+    if (!grid) return;
+
+    const filtered = shopFilter === 'all'
+      ? shopItems
+      : shopItems.filter(i => i.status === shopFilter);
+
+    if (filtered.length === 0) {
+      const msg = shopFilter === 'all'
+        ? 'No items yet. Add one above ↑'
+        : `No items in "${STATUS_LABEL[shopFilter]}".`;
+      grid.innerHTML = `<div class="shop-empty">${msg}</div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(item => {
+      const editClass = item.id === editingId ? ' editing' : '';
+      const link = item.url
+        ? `<a class="shop-link" href="${escapeHtmlShop(item.url)}" target="_blank" rel="noopener">🔗 ${escapeHtmlShop(item.url.length > 50 ? item.url.slice(0, 50) + '…' : item.url)}</a>`
+        : '';
+      const store = item.store ? `<span><strong>${escapeHtmlShop(item.store)}</strong></span>` : '';
+      const price = item.price ? `<span>${formatPrice(item.price)}</span>` : '';
+      const notes = item.notes ? `<div class="shop-notes">${escapeHtmlShop(item.notes)}</div>` : '';
+
+      return `
+        <div class="shop-card${editClass}" data-id="${item.id}">
+          <div class="shop-card-head">
+            <div class="shop-card-name">${escapeHtmlShop(item.name)}</div>
+            <span class="status-badge" data-s="${item.status}" data-id="${item.id}">${STATUS_LABEL[item.status]}</span>
+          </div>
+          <div class="shop-meta">${store}${price}</div>
+          ${link}
+          ${notes}
+          <div class="shop-card-actions">
+            <button class="btn ghost" data-edit="${item.id}">edit</button>
+            <button class="btn danger" data-del-shop="${item.id}">✕</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Wire up status badge clicks (cycle through statuses)
+    grid.querySelectorAll('.status-badge').forEach(badge => {
+      badge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = badge.dataset.id;
+        const item = shopItems.find(i => i.id === id);
+        if (!item) return;
+        const idx = STATUS_ORDER.indexOf(item.status);
+        item.status = STATUS_ORDER[(idx + 1) % STATUS_ORDER.length];
+        saveShop(shopItems);
+        renderShop();
+      });
+    });
+
+    // Wire up edit
+    grid.querySelectorAll('[data-edit]').forEach(btn => {
+      btn.addEventListener('click', () => beginEditShop(btn.dataset.edit));
+    });
+
+    // Wire up delete
+    grid.querySelectorAll('[data-del-shop]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.delShop;
+        const item = shopItems.find(i => i.id === id);
+        if (!item) return;
+        if (confirm(`Delete "${item.name}" from shopping list?`)) {
+          shopItems = shopItems.filter(i => i.id !== id);
+          saveShop(shopItems);
+          renderShop();
+        }
+      });
+    });
+  }
+
+  function renderShopDashboard() {
+    const statEl = document.getElementById('stat-shop');
+    const detailEl = document.getElementById('stat-shop-detail');
+    const barEl = document.getElementById('bar-shop');
+    if (!statEl) return;
+    const total = shopItems.length;
+    const delivered = shopItems.filter(i => i.status === 'delivered').length;
+    const estimated = shopItems.reduce((s, i) => s + (parseFloat(i.price) || 0), 0);
+    statEl.textContent = `${delivered}/${total}`;
+    detailEl.textContent = estimated > 0 ? `${formatPrice(estimated)} estimated` : '$0 estimated';
+    barEl.style.width = total ? (delivered / total * 100) + '%' : '0%';
+  }
+
+  function renderShop() {
+    renderShopSummary();
+    renderShopList();
+    renderShopDashboard();
+  }
+
+  function clearShopForm() {
+    document.getElementById('shop-name').value = '';
+    document.getElementById('shop-url').value = '';
+    document.getElementById('shop-store').value = '';
+    document.getElementById('shop-price').value = '';
+    document.getElementById('shop-status').value = 'researching';
+    document.getElementById('shop-notes').value = '';
+    editingId = null;
+    document.getElementById('add-shop').textContent = '+ Add item';
+    document.getElementById('cancel-edit-shop').style.display = 'none';
+  }
+
+  function beginEditShop(id) {
+    const item = shopItems.find(i => i.id === id);
+    if (!item) return;
+    editingId = id;
+    document.getElementById('shop-name').value = item.name;
+    document.getElementById('shop-url').value = item.url || '';
+    document.getElementById('shop-store').value = item.store || '';
+    document.getElementById('shop-price').value = item.price || '';
+    document.getElementById('shop-status').value = item.status;
+    document.getElementById('shop-notes').value = item.notes || '';
+    document.getElementById('add-shop').textContent = '✓ Update';
+    document.getElementById('cancel-edit-shop').style.display = '';
+    document.getElementById('shop-name').focus();
+    renderShop();
+    document.getElementById('shop-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Auto-detect store on URL paste
+  const shopUrlEl = document.getElementById('shop-url');
+  if (shopUrlEl) {
+    shopUrlEl.addEventListener('input', () => {
+      const storeEl = document.getElementById('shop-store');
+      if (!storeEl.value || storeEl.dataset.auto === '1') {
+        const detected = detectStore(shopUrlEl.value);
+        if (detected) {
+          storeEl.value = detected;
+          storeEl.dataset.auto = '1';
+        }
+      }
+    });
+    document.getElementById('shop-store').addEventListener('input', (e) => {
+      e.target.dataset.auto = '0'; // user typed manually
+    });
+  }
+
+  // Add or update item
+  const addShopBtn = document.getElementById('add-shop');
+  if (addShopBtn) {
+    addShopBtn.addEventListener('click', () => {
+      const name = document.getElementById('shop-name').value.trim();
+      const url = document.getElementById('shop-url').value.trim();
+      const store = document.getElementById('shop-store').value.trim() || detectStore(url);
+      const priceRaw = document.getElementById('shop-price').value;
+      const price = priceRaw ? parseFloat(priceRaw) : null;
+      const status = document.getElementById('shop-status').value;
+      const notes = document.getElementById('shop-notes').value.trim();
+
+      if (!name) {
+        alert('Item name is required.');
+        return;
+      }
+
+      if (editingId) {
+        const item = shopItems.find(i => i.id === editingId);
+        if (item) {
+          Object.assign(item, { name, url, store, price, status, notes });
+        }
+      } else {
+        shopItems.unshift({
+          id: 'item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          name, url, store, price, status, notes,
+          added: new Date().toISOString().slice(0, 10),
+        });
+      }
+      saveShop(shopItems);
+      renderShop();
+      clearShopForm();
+    });
+  }
+
+  const cancelEditBtn = document.getElementById('cancel-edit-shop');
+  if (cancelEditBtn) {
+    cancelEditBtn.addEventListener('click', () => {
+      clearShopForm();
+      renderShop();
+    });
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      shopFilter = btn.dataset.filter;
+      renderShopList();
+    });
+  });
+
+  // Export CSV
+  const exportShopBtn = document.getElementById('export-shop');
+  if (exportShopBtn) {
+    exportShopBtn.addEventListener('click', () => {
+      if (shopItems.length === 0) { alert('No shopping items to export.'); return; }
+      const rows = [['Item', 'Store', 'URL', 'Price (CAD)', 'Status', 'Notes', 'Date added']];
+      shopItems.forEach(i => {
+        rows.push([
+          i.name, i.store || '', i.url || '',
+          i.price != null ? i.price.toFixed(2) : '',
+          STATUS_LABEL[i.status] || i.status,
+          i.notes || '', i.added || '',
+        ]);
+      });
+      const csv = rows.map(r => r.map(c =>
+        `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `shopping-list-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  // Restore defaults
+  const seedBtn = document.getElementById('seed-shop');
+  if (seedBtn) {
+    seedBtn.addEventListener('click', () => {
+      if (!confirm('Replace all current items with the original 6 default items? Existing items will be lost.')) return;
+      shopItems = SHOP_SEED.map((s, i) => ({
+        id: `seed-${i}-${Date.now()}`,
+        name: s.name, url: '', store: '', price: null,
+        status: s.status, notes: s.notes,
+        added: new Date().toISOString().slice(0, 10),
+      }));
+      saveShop(shopItems);
+      renderShop();
+    });
+  }
+
+  // Initial render
+  renderShop();
 
 </script>
 </body>
